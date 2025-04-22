@@ -1,7 +1,7 @@
 /* Global Styles */
 :root {
     --primary-color: #0a192f;
-    --secondary-color: #64ffda;
+    --secondary-color: #AF8FE9;
     --accent-color: #ff6b6b;
     --text-color: #ccd6f6;
     --light-bg: #112240;
@@ -171,6 +171,7 @@ nav a:hover {
     background: rgba(17, 34, 64, 0.7);
     position: relative;
     backdrop-filter: blur(10px);
+    z-index: 5;
 }
 
 .services h2 {
@@ -192,11 +193,13 @@ nav a:hover {
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(100, 255, 218, 0.1);
+    position: relative;
+    z-index: 10;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .service-card.visible {
@@ -214,6 +217,7 @@ nav a:hover {
 .testimonials {
     padding: 5rem 5%;
     position: relative;
+    z-index: 5;
 }
 
 .testimonials h2 {
@@ -237,9 +241,11 @@ nav a:hover {
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(100, 255, 218, 0.1);
+    position: relative;
+    z-index: 10;
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .testimonial-card.visible {
@@ -326,61 +332,60 @@ footer {
 /* Rocket Animation */
 .rocket {
     position: fixed;
-    left: 50%;
-    top: -100px;
-    width: 100px;
-    height: 100px;
-    transform: translateX(-50%) rotate(45deg);
+    left: -150px;
+    top: 25%;
+    width: 80px;
+    height: 80px;
+    transform: rotate(90deg);
     opacity: 0;
-    transition: all 0.5s ease;
-    z-index: 1000;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .rocket.visible {
-    opacity: 1;
-    top: 50%;
+    opacity: 0.8;
 }
 
 .rocket i {
-    font-size: 3rem;
+    font-size: 2.5rem;
     background: linear-gradient(45deg, #ff00ff, #ff0000);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: rocketThrust 0.5s ease-in-out infinite;
+    display: block;
 }
 
 .rocket::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    top: -15px;
     left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 20px;
+    transform: translateX(-50%) rotate(180deg);
+    width: 15px;
+    height: 15px;
     background: linear-gradient(45deg, #ff00ff, #ff0000);
     border-radius: 50%;
-    filter: blur(5px);
-    animation: rocketFlame 0.5s ease-in-out infinite;
-}
-
-@keyframes rocketThrust {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    filter: blur(4px);
+    animation: rocketFlame 0.3s ease-in-out infinite alternate;
 }
 
 @keyframes rocketFlame {
-    0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-    50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
-    100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+    from {
+        transform: translateX(-50%) rotate(180deg) scale(1);
+        opacity: 0.7;
+    }
+    to {
+        transform: translateX(-50%) rotate(180deg) scale(1.3);
+        opacity: 1;
+    }
 }
 
 /* Textbox Animations */
 .service-card, .testimonial-card {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .service-card.visible, .testimonial-card.visible {

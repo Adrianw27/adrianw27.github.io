@@ -14,31 +14,52 @@ function handleScrollAnimations() {
     const rocket = document.querySelector('.rocket');
     const serviceCards = document.querySelectorAll('.service-card');
     const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
     
-    // Rocket animation - appears when scrolling starts
-    if (window.scrollY > 50) {
-        rocket.classList.add('visible');
-    } else {
-        rocket.classList.remove('visible');
+    // Rocket animation - fly left-to-right behind content
+    if (rocket) { // Check if rocket exists
+        if (scrollY > 50) {
+            rocket.classList.add('visible');
+            
+            // Calculate scroll progress (0 to 1)
+            const scrollProgress = Math.min(1, Math.max(0, (scrollY - 50) / (docHeight - windowHeight - 50)));
+            
+            // Calculate horizontal position (from -150px to window.innerWidth + 50px)
+            const rocketX = scrollProgress * (window.innerWidth + 200) - 150;
+            
+            // Apply the position directly for smooth movement linked to scroll
+            rocket.style.left = `${rocketX}px`;
+            
+        } else {
+            rocket.classList.remove('visible');
+            // Reset position when scrolling back to top
+            rocket.style.left = '-150px'; 
+        }
     }
 
     // Service cards animation
     serviceCards.forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
-        const cardBottom = card.getBoundingClientRect().bottom;
-        
-        if (cardTop < window.innerHeight * 0.8 && cardBottom > 0) {
+        // Trigger when card is 80% in view
+        if (cardTop < windowHeight * 0.8) {
             card.classList.add('visible');
+        } else {
+            // Optional: Remove class if user scrolls back up
+            // card.classList.remove('visible'); 
         }
     });
 
     // Testimonial cards animation
     testimonialCards.forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
-        const cardBottom = card.getBoundingClientRect().bottom;
-        
-        if (cardTop < window.innerHeight * 0.8 && cardBottom > 0) {
+        // Trigger when card is 80% in view
+        if (cardTop < windowHeight * 0.8) {
             card.classList.add('visible');
+        } else {
+            // Optional: Remove class if user scrolls back up
+            // card.classList.remove('visible');
         }
     });
 }
