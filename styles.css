@@ -326,24 +326,42 @@ footer {
 /* Rocket Animation */
 .rocket {
     position: fixed;
-    right: -100px;
-    top: 50%;
+    left: 50%;
+    top: -100px;
     width: 100px;
     height: 100px;
-    transform: rotate(-45deg);
+    transform: translateX(-50%) rotate(45deg);
     opacity: 0;
     transition: all 0.5s ease;
+    z-index: 1000;
 }
 
 .rocket.visible {
     opacity: 1;
-    right: 0;
+    top: 50%;
 }
 
 .rocket i {
     font-size: 3rem;
-    color: var(--secondary-color);
+    background: linear-gradient(45deg, #ff00ff, #ff0000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     animation: rocketThrust 0.5s ease-in-out infinite;
+}
+
+.rocket::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #ff00ff, #ff0000);
+    border-radius: 50%;
+    filter: blur(5px);
+    animation: rocketFlame 0.5s ease-in-out infinite;
 }
 
 @keyframes rocketThrust {
@@ -351,6 +369,33 @@ footer {
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
+
+@keyframes rocketFlame {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+    50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+}
+
+/* Textbox Animations */
+.service-card, .testimonial-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card.visible, .testimonial-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card:nth-child(1) { transition-delay: 0.1s; }
+.service-card:nth-child(2) { transition-delay: 0.2s; }
+.service-card:nth-child(3) { transition-delay: 0.3s; }
+.service-card:nth-child(4) { transition-delay: 0.4s; }
+
+.testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+.testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+.testimonial-card:nth-child(3) { transition-delay: 0.3s; }
 
 /* Responsive Design */
 @media (max-width: 768px) {

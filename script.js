@@ -15,8 +15,8 @@ function handleScrollAnimations() {
     const serviceCards = document.querySelectorAll('.service-card');
     const testimonialCards = document.querySelectorAll('.testimonial-card');
     
-    // Rocket animation
-    if (window.scrollY > 100) {
+    // Rocket animation - appears when scrolling starts
+    if (window.scrollY > 50) {
         rocket.classList.add('visible');
     } else {
         rocket.classList.remove('visible');
@@ -27,7 +27,7 @@ function handleScrollAnimations() {
         const cardTop = card.getBoundingClientRect().top;
         const cardBottom = card.getBoundingClientRect().bottom;
         
-        if (cardTop < window.innerHeight && cardBottom > 0) {
+        if (cardTop < window.innerHeight * 0.8 && cardBottom > 0) {
             card.classList.add('visible');
         }
     });
@@ -37,14 +37,23 @@ function handleScrollAnimations() {
         const cardTop = card.getBoundingClientRect().top;
         const cardBottom = card.getBoundingClientRect().bottom;
         
-        if (cardTop < window.innerHeight && cardBottom > 0) {
+        if (cardTop < window.innerHeight * 0.8 && cardBottom > 0) {
             card.classList.add('visible');
         }
     });
 }
 
-// Add scroll event listener
-window.addEventListener('scroll', handleScrollAnimations);
+// Add scroll event listener with throttling
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            handleScrollAnimations();
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
 
 // Initial check for elements in view
 document.addEventListener('DOMContentLoaded', () => {
