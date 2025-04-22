@@ -254,11 +254,12 @@ nav a:hover {
     overflow: hidden;
 }
 
+/* Added Planet 1 */
 .services::before {
     content: '';
     position: absolute;
     top: 15%;
-    left: -50px;
+    left: -50px; /* Start off-screen */
     width: 100px;
     height: 100px;
     background: radial-gradient(circle, #ffcc66 20%, #cc6600 80%);
@@ -273,7 +274,7 @@ nav a:hover {
 .services.visible::before {
     opacity: 0.6;
     transform: scale(1);
-    left: 5%;
+    left: 5%; /* Move on-screen */
 }
 
 .services h2 {
@@ -329,40 +330,27 @@ nav a:hover {
     overflow: hidden;
 }
 
-.testimonials::before {
+/* Added Planet 2 */
+.testimonials::after {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    /* Generate ~50 stars with different positions */
-    box-shadow: 
-        117px 313px 1px var(--white), 210px 119px 1px var(--white), 
-        784px 318px 2px var(--white), 339px 144px 1px var(--white), 
-        85px 406px 1px var(--white), 118px 32px 1px var(--white), 
-        758px 467px 1px var(--white), 326px 96px 1px var(--white), 
-        434px 564px 1px var(--white), 113px 231px 2px var(--white), 
-        47px 75px 1px var(--white), 512px 523px 1px var(--white), 
-        302px 37px 2px var(--white), 14px 41px 1px var(--white), 
-        38px 88px 1px var(--white), 637px 528px 1px var(--white), 
-        454px 11px 1px var(--white), 498px 323px 1px var(--white), 
-        638px 24px 2px var(--white), 84px 46px 1px var(--white), 
-        85px 24px 1px var(--white), 40px 76px 1px var(--white), 
-        409px 15px 1px var(--white), 35px 585px 1px var(--white), 
-        729px 516px 2px var(--white), 327px 47px 1px var(--white), 
-        59px 65px 1px var(--white), 156px 544px 1px var(--white), 
-        43px 16px 1px var(--white), 537px 206px 1px var(--white), 
-        611px 110px 2px var(--white), 68px 444px 1px var(--white), 
-        341px 51px 1px var(--white), 416px 35px 1px var(--white), 
-        24px 184px 1px var(--white), 15px 87px 2px var(--white), 
-        505px 555px 1px var(--white), 16px 99px 1px var(--white), 
-        634px 67px 1px var(--white), 28px 40px 1px var(--white), 
-        68px 57px 2px var(--white), 53px 74px 1px var(--white), 
-        489px 501px 1px var(--white), 18px 137px 1px var(--white), 
-        55px 417px 1px var(--white), 109px 89px 1px var(--white), 
-        506px 68px 1px var(--white), 15px 73px 2px var(--white);
-    animation: sectionTwinkle 6s linear infinite alternate;
-    animation-delay: -2s; /* Offset animation */
-    z-index: 0; /* Ensure stars are behind content */
+    bottom: 10%;
+    right: -80px; /* Start off-screen */
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, #66ccff 30%, #003366 90%);
+    border-radius: 50%;
+    box-shadow: inset 10px 10px 25px rgba(0,0,0,0.4), 0 0 20px #66ccff;
+    opacity: 0;
+    transform: scale(0.6) rotate(15deg);
+    transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s, right 1s ease-out 0.5s;
+    z-index: 1; /* Changed from before element */
+}
+
+.testimonials.visible::after {
+    opacity: 0.7;
+    transform: scale(1) rotate(0deg);
+    right: 8%; /* Move on-screen */
 }
 
 .testimonials h2 {
@@ -418,7 +406,7 @@ nav a:hover {
 }
 
 .testimonial-card h4 {
-    color: var(--primary-color);
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 
@@ -603,13 +591,13 @@ footer {
     .services.visible::before {
         left: 2%;
     }
-    .testimonials::before {
+    .testimonials::after {
         width: 90px;
         height: 90px;
         right: -45px;
         bottom: 5%;
     }
-    .testimonials.visible::before {
+    .testimonials.visible::after {
         right: 3%;
     }
 }
