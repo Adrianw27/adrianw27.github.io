@@ -28,7 +28,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Space Background */
+/* Space Background with Planets */
 body::before {
     content: '';
     position: fixed;
@@ -52,6 +52,32 @@ body::before {
     background-size: 200px 200px;
     animation: twinkle 4s linear infinite;
     z-index: -1;
+}
+
+/* Add Ringed Planets */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: 
+        /* Large Ringed Planet - bottom right */
+        radial-gradient(30px 25px at calc(100% - 100px) calc(100% - 100px), 
+            rgba(135, 206, 250, 0.5), rgba(0,0,0,0) 80%),
+        /* Rings for large planet */
+        radial-gradient(80px 20px at calc(100% - 100px) calc(100% - 100px), 
+            rgba(255, 215, 0, 0.2) 30%, rgba(0,0,0,0) 75%),
+        
+        /* Small Ringed Planet - top left */
+        radial-gradient(15px 15px at 150px 120px, 
+            rgba(173, 216, 230, 0.4), rgba(0,0,0,0) 80%),
+        /* Rings for small planet */
+        radial-gradient(40px 10px at 150px 120px, 
+            rgba(255, 165, 0, 0.15) 30%, rgba(0,0,0,0) 75%);
 }
 
 @keyframes twinkle {
@@ -258,6 +284,28 @@ nav a:hover {
 .star-28 { width: 4px; height: 4px; top: 92%; left: 43%; animation-delay: 3.6s; }
 .star-29 { width: 3px; height: 3px; top: 15%; left: 73%; animation-delay: 3.8s; }
 .star-30 { width: 2px; height: 2px; top: 36%; left: 8%; animation-delay: 4.0s; }
+
+/* Add 20 more stars (star-31 through star-50) */
+.star-31 { width: 2px; height: 2px; top: 5%; left: 45%; animation-delay: 0.3s; }
+.star-32 { width: 3px; height: 3px; top: 15%; left: 75%; animation-delay: 0.5s; }
+.star-33 { width: 2px; height: 2px; top: 25%; left: 15%; animation-delay: 0.7s; }
+.star-34 { width: 2px; height: 2px; top: 35%; left: 45%; animation-delay: 0.9s; }
+.star-35 { width: 3px; height: 3px; top: 45%; left: 75%; animation-delay: 1.1s; }
+.star-36 { width: 2px; height: 2px; top: 55%; left: 25%; animation-delay: 1.3s; }
+.star-37 { width: 4px; height: 4px; top: 60%; left: 85%; animation-delay: 1.5s; }
+.star-38 { width: 2px; height: 2px; top: 70%; left: 35%; animation-delay: 1.7s; }
+.star-39 { width: 3px; height: 3px; top: 80%; left: 65%; animation-delay: 1.9s; }
+.star-40 { width: 2px; height: 2px; top: 90%; left: 15%; animation-delay: 2.1s; }
+.star-41 { width: 3px; height: 3px; top: 7%; left: 27%; animation-delay: 2.3s; }
+.star-42 { width: 2px; height: 2px; top: 17%; left: 57%; animation-delay: 2.5s; }
+.star-43 { width: 4px; height: 4px; top: 27%; left: 87%; animation-delay: 2.7s; }
+.star-44 { width: 2px; height: 2px; top: 37%; left: 17%; animation-delay: 2.9s; }
+.star-45 { width: 3px; height: 3px; top: 47%; left: 47%; animation-delay: 3.1s; }
+.star-46 { width: 2px; height: 2px; top: 57%; left: 77%; animation-delay: 3.3s; }
+.star-47 { width: 3px; height: 3px; top: 67%; left: 7%; animation-delay: 3.5s; }
+.star-48 { width: 2px; height: 2px; top: 77%; left: 37%; animation-delay: 3.7s; }
+.star-49 { width: 3px; height: 3px; top: 87%; left: 67%; animation-delay: 3.9s; }
+.star-50 { width: 2px; height: 2px; top: 97%; left: 97%; animation-delay: 4.1s; }
 
 @keyframes twinkle-star {
     0% { opacity: 0.2; transform: scale(0.8); }
@@ -565,20 +613,14 @@ footer {
 .rocket::after {
     content: '';
     position: absolute;
-    /* Original - flame is in front and off-centered
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%) rotate(180deg); */
-    
-    /* Fixed - flame is centered behind the rocket */
-    bottom: 45px; /* Position at bottom of rocket */
-    left: 50%;
-    transform: translateX(-50%) rotate(180deg);
-    width: 15px;
-    height: 15px;
+    /* Fix flame position to be behind the rocket */
+    top: 40px; /* Position at center-left of the rocket */
+    left: -10px;
+    width: 20px;
+    height: 20px;
     background: linear-gradient(45deg, #ff00ff, #ff0000);
     border-radius: 50%;
-    filter: blur(4px);
+    filter: blur(6px);
     z-index: 1; /* Ensure flame is behind the rocket */
     animation: rocketFlame 0.3s ease-in-out infinite alternate;
 }
