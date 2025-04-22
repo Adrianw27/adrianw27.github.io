@@ -16,6 +16,7 @@ function handleScrollAnimations() {
     const testimonialCards = document.querySelectorAll('.testimonial-card');
     const servicesSection = document.querySelector('.services');
     const testimonialsSection = document.querySelector('.testimonials');
+    const fadeinElements = document.querySelectorAll('.fade-in-element');
     
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
@@ -83,6 +84,16 @@ function handleScrollAnimations() {
         } else {
             // Optional: Remove class if user scrolls back up
             // card.classList.remove('visible');
+        }
+    });
+
+    // Added check for generic fade-in elements
+    fadeinElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight * 0.85) { // Use a similar trigger threshold
+            element.classList.add('visible');
+        } else {
+             // Optional: element.classList.remove('visible'); 
         }
     });
 }

@@ -198,7 +198,7 @@ nav a:hover {
         270px 590px 2px var(--white), 500px 160px 1px var(--white); 
 
     animation: sectionTwinkle 5s linear infinite alternate;
-    z-index: 0; /* Ensure stars are behind content */
+    z-index: 1; /* Adjusted to be above hero background but below content */
 }
 
 .hero-content {
@@ -606,4 +606,18 @@ footer {
 @keyframes sectionTwinkle {
     from { opacity: 0.3; }
     to { opacity: 0.9; }
-} 
+}
+
+/* Generic Fade-in Animation */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card:nth-child(1) { transition-delay: 0.1s; } 
