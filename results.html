@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Results - Galactic Web Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .results-section {
+            padding: 8rem 5% 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--secondary-color), var(--text-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: rgba(17, 34, 64, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .result-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .graph-placeholder {
+            background-color: rgba(10, 25, 47, 0.8); /* Darker bg for contrast */
+            border: 1px dashed var(--secondary-color);
+            padding: 1rem;
+            border-radius: 5px;
+            min-height: 200px; /* Give it some height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .graph-placeholder img {
+            max-width: 100%;
+            height: auto;
+            opacity: 0.8;
+        }
+        .graph-placeholder span {
+             color: var(--secondary-color);
+             font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class="fas fa-rocket"></i>
+            <span>Galactic Web Services</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="results-section">
+        <h2>Our Stellar Results</h2>
+        <div class="results-grid">
+            
+            <div class="result-card">
+                <h3>TechStart Solutions</h3>
+                <p>After launching their new Galactic-powered website, TechStart saw a dramatic increase in user engagement and lead generation.</p>
+                <ul>
+                    <li><strong>Website Traffic:</strong> +150% within 6 months</li>
+                    <li><strong>Conversion Rate:</strong> +75%</li>
+                    <li><strong>Search Engine Ranking:</strong> Top 3 for key terms</li>
+                </ul>
+                <div class="graph-placeholder">
+                    <!-- Placeholder Graph: Replace with actual graph image/library -->
+                    <img src="https://via.placeholder.com/300x200/0A192F/AF8FE9?text=Traffic+%26+Conversion+Graph" alt="Graph showing traffic and conversion increase for TechStart Solutions">
+                    <!-- Or use simple text: <span>[Graph showing 150% Traffic Increase]</span> -->
+                </div>
+            </div>
+
+            <div class="result-card">
+                <h3>Innovation Labs</h3>
+                <p>Our bespoke design and performance optimization helped Innovation Labs solidify their brand image and attract high-value clients.</p>
+                 <ul>
+                    <li><strong>Page Load Speed:</strong> Reduced by 60%</li>
+                    <li><strong>Bounce Rate:</strong> Decreased by 40%</li>
+                    <li><strong>Average Session Duration:</strong> Increased by 50%</li>
+                </ul>
+                <div class="graph-placeholder">
+                    <!-- Placeholder Graph: Replace with actual graph image/library -->
+                    <img src="https://via.placeholder.com/300x200/0A192F/AF8FE9?text=Performance+Metrics+Graph" alt="Graph showing performance improvements for Innovation Labs">
+                     <!-- Or use simple text: <span>[Graph showing Performance Gains]</span> -->
+               </div>
+            </div>
+
+            <div class="result-card">
+                <h3>Global Ventures</h3>
+                <p>The seamless user experience and clear call-to-actions on their new site directly translated to measurable business growth for Global Ventures.</p>
+                 <ul>
+                    <li><strong>Online Sales:</strong> +120% Year-over-Year</li>
+                    <li><strong>Customer Satisfaction Score:</strong> Improved by 25 points</li>
+                    <li><strong>Mobile Engagement:</strong> Increased by 80%</li>
+                </ul>
+                <div class="graph-placeholder">
+                    <!-- Placeholder Graph: Replace with actual graph image/library -->
+                     <img src="https://via.placeholder.com/300x200/0A192F/AF8FE9?text=Sales+%26+Satisfaction+Graph" alt="Graph showing sales and satisfaction increase for Global Ventures">
+                    <!-- Or use simple text: <span>[Graph showing Sales Growth]</span> -->
+               </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Galactic Web Services</h3>
+                <p>Creating stellar digital experiences</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@galacticweb.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Galactic Web Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
