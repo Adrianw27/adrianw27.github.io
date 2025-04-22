@@ -9,6 +9,48 @@ if (!localStorage.getItem(STORAGE_KEY)) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
 }
 
+// Scroll Animation Logic
+function handleScrollAnimations() {
+    const rocket = document.querySelector('.rocket');
+    const serviceCards = document.querySelectorAll('.service-card');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    
+    // Rocket animation
+    if (window.scrollY > 100) {
+        rocket.classList.add('visible');
+    } else {
+        rocket.classList.remove('visible');
+    }
+
+    // Service cards animation
+    serviceCards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        const cardBottom = card.getBoundingClientRect().bottom;
+        
+        if (cardTop < window.innerHeight && cardBottom > 0) {
+            card.classList.add('visible');
+        }
+    });
+
+    // Testimonial cards animation
+    testimonialCards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        const cardBottom = card.getBoundingClientRect().bottom;
+        
+        if (cardTop < window.innerHeight && cardBottom > 0) {
+            card.classList.add('visible');
+        }
+    });
+}
+
+// Add scroll event listener
+window.addEventListener('scroll', handleScrollAnimations);
+
+// Initial check for elements in view
+document.addEventListener('DOMContentLoaded', () => {
+    handleScrollAnimations();
+});
+
 // Contact Form Handling
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
