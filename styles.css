@@ -151,6 +151,24 @@ nav a:hover {
     color: var(--text-color);
 }
 
+/* Mobile Nav Styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 5px;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+    border-radius: 1px;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -679,13 +697,54 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
         padding: 1rem;
     }
-
+    
+    .hamburger {
+        display: block;
+    }
+    
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
     nav ul {
-        margin-top: 1rem;
-        gap: 1rem;
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(10, 25, 47, 0.95);
+        backdrop-filter: blur(5px);
+        width: 100%;
+        text-align: center;
+        transition: 0.4s ease-in-out;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        margin: 0;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+    
+    nav ul.active {
+        left: 0;
+    }
+    
+    nav ul li {
+        margin: 15px 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        font-size: 1.1rem;
     }
 
     .hero h1 {

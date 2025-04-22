@@ -76,6 +76,11 @@
             <i class="fas fa-rocket"></i>
             <span>Galactic Web Services</span>
         </div>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -128,7 +133,7 @@
                 </ul>
                 <div class="graph-placeholder">
                     <!-- Real chart image using QuickChart.io with light text color -->
-                     <img src="https://quickchart.io/chart?c={type:'doughnut',data:{labels:['Desktop Sales','Mobile Sales'],datasets:[{data:[45,55],backgroundColor:['%23AF8FE9','%23ff6b6b']}]},options:{legend:{labels:{fontColor:'%23ffffff'}},plugins:{doughnutlabel:{labels:[{text:'120%',font:{size:20,color:'%23ffffff'}},{text:'Growth',font:{size:16,color:'%23ffffff'}}]}}}}&backgroundColor=%230a192f" alt="Graph showing sales and satisfaction increase for Global Ventures">
+                     <img src="https://quickchart.io/chart?c={type:'doughnut',data:{labels:['Desktop Sales','Mobile Sales'],datasets:[{data:[45,55],backgroundColor:['%23AF8FE9','%23ff6b6b']}]},options:{legend:{labels:{fontColor:'%23ccd6f6'}},plugins:{doughnutlabel:{labels:[{text:'120%',font:{size:20,color:'%23ccd6f6'}},{text:'Growth',font:{size:16,color:'%23ccd6f6'}}]}}}}&backgroundColor=%230a192f" alt="Graph showing sales and satisfaction increase for Global Ventures">
                </div>
             </div>
 
@@ -161,5 +166,24 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('nav ul');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when a link is clicked
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html> 
