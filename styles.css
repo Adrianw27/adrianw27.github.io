@@ -136,53 +136,139 @@ nav a:hover {
     color: var(--white);
     padding: 0 1rem;
     position: relative;
-    overflow: visible;
+    overflow: visible; /* Allow stars to be visible outside if needed */
 }
 
-.hero::before {
-    content: '';
+/* NEW APPROACH: Star container and stars */
+.star-container {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    /* Generate ~150 stars (original + added) */
-    box-shadow: 
-        /* Original stars - now with larger sizes and some colorful ones */
-        717px 613px 3px #ffffff, 610px 519px 2px #ffffff, 
-        484px 18px 4px #ccffff, 639px 44px 2px #ffffff, 
-        685px 6px 2px #ffffff, 418px 432px 3px #ffffff, 
-        458px 67px 2px #ffffff, 26px 596px 2px #ffffff, 
-        734px 264px 2px #ffffff, 513px 631px 4px #ccffff, 
-        747px 375px 2px #ffffff, 12px 123px 2px #ffffff, 
-        602px 237px 4px #ccffff, 714px 341px 2px #ffffff, 
-        638px 488px 2px #ffffff, 337px 28px 2px #ffffff, 
-        154px 211px 2px #ffffff, 198px 223px 3px #ffffff, 
-        38px 424px 4px #ccffff, 184px 346px 2px #ffffff, 
-        385px 624px 2px #ffffff, 740px 576px 2px #ffffff, 
-        709px 515px 2px #ffffff, 35px 85px 3px #ffffff, 
-        729px 16px 4px #ccffff, 27px 347px 2px #ffffff, 
-        559px 365px 2px #ffffff, 156px 44px 2px #ffffff, 
-        43px 616px 3px #ffffff, 537px 606px 2px #ffffff, 
-        211px 510px 4px #ffffff, 68px 144px 2px #ffffff, 
-        641px 151px 2px #ffffff, 116px 135px 3px #ffffff, 
-        24px 484px 2px #ffffff, 515px 187px 4px #ccffff, 
-        505px 5px 2px #ffffff, 516px 399px 2px #ffffff, 
-        334px 467px 3px #ffffff, 628px 440px 2px #ffffff, 
-        268px 507px 4px #ffffff, 253px 274px 2px #ffffff, 
-        489px 201px 2px #ffffff, 718px 37px 2px #ffffff, 
-        55px 117px 3px #ffffff, 109px 189px 2px #ffffff, 
-        506px 268px 2px #ffffff, 715px 473px 4px #ccffff,
-        /* Additional stars previously added */ 
-        /* ... existing additional stars ... */;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
 
-    animation: sectionTwinkle 5s linear infinite alternate;
-    z-index: 3; /* Increased z-index to make sure it's visible above all backgrounds */
-    pointer-events: none; /* Ensure it doesn't interfere with clicking */
+.star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: twinkle-star 3s infinite ease-in-out;
+}
+
+.star-1 {
+    width: 3px;
+    height: 3px;
+    top: 10%;
+    left: 20%;
+    animation-delay: 0.1s;
+}
+
+.star-2 {
+    width: 4px;
+    height: 4px;
+    top: 15%;
+    left: 50%;
+    animation-delay: 0.5s;
+}
+
+.star-3 {
+    width: 2px;
+    height: 2px;
+    top: 25%;
+    left: 80%;
+    animation-delay: 0.9s;
+}
+
+.star-4 {
+    width: 4px;
+    height: 4px;
+    top: 35%;
+    left: 30%;
+    animation-delay: 1.3s;
+}
+
+.star-5 {
+    width: 3px;
+    height: 3px;
+    top: 45%;
+    left: 70%;
+    animation-delay: 1.7s;
+}
+
+.star-6 {
+    width: 5px;
+    height: 5px;
+    top: 65%;
+    left: 15%;
+    animation-delay: 2.1s;
+}
+
+.star-7 {
+    width: 3px;
+    height: 3px;
+    top: 75%;
+    left: 40%;
+    animation-delay: 2.5s;
+}
+
+.star-8 {
+    width: 4px;
+    height: 4px;
+    top: 85%;
+    left: 60%;
+    animation-delay: 2.9s;
+}
+
+.star-9 {
+    width: 5px;
+    height: 5px;
+    top: 5%;
+    left: 90%;
+    animation-delay: 3.3s;
+}
+
+.star-10 {
+    width: 3px;
+    height: 3px;
+    top: 55%;
+    left: 10%;
+    animation-delay: 3.7s;
+}
+
+/* Create 20 more stars with varied positions */
+.star-11 { width: 2px; height: 2px; top: 8%; left: 35%; animation-delay: 0.2s; }
+.star-12 { width: 3px; height: 3px; top: 18%; left: 65%; animation-delay: 0.4s; }
+.star-13 { width: 4px; height: 4px; top: 28%; left: 25%; animation-delay: 0.6s; }
+.star-14 { width: 2px; height: 2px; top: 38%; left: 55%; animation-delay: 0.8s; }
+.star-15 { width: 3px; height: 3px; top: 48%; left: 85%; animation-delay: 1.0s; }
+.star-16 { width: 2px; height: 2px; top: 58%; left: 5%; animation-delay: 1.2s; }
+.star-17 { width: 4px; height: 4px; top: 68%; left: 45%; animation-delay: 1.4s; }
+.star-18 { width: 3px; height: 3px; top: 78%; left: 75%; animation-delay: 1.6s; }
+.star-19 { width: 2px; height: 2px; top: 88%; left: 95%; animation-delay: 1.8s; }
+.star-20 { width: 3px; height: 3px; top: 12%; left: 3%; animation-delay: 2.0s; }
+.star-21 { width: 4px; height: 4px; top: 22%; left: 33%; animation-delay: 2.2s; }
+.star-22 { width: 2px; height: 2px; top: 32%; left: 63%; animation-delay: 2.4s; }
+.star-23 { width: 3px; height: 3px; top: 42%; left: 93%; animation-delay: 2.6s; }
+.star-24 { width: 3px; height: 3px; top: 52%; left: 23%; animation-delay: 2.8s; }
+.star-25 { width: 4px; height: 4px; top: 62%; left: 53%; animation-delay: 3.0s; }
+.star-26 { width: 2px; height: 2px; top: 72%; left: 83%; animation-delay: 3.2s; }
+.star-27 { width: 3px; height: 3px; top: 82%; left: 13%; animation-delay: 3.4s; }
+.star-28 { width: 4px; height: 4px; top: 92%; left: 43%; animation-delay: 3.6s; }
+.star-29 { width: 3px; height: 3px; top: 15%; left: 73%; animation-delay: 3.8s; }
+.star-30 { width: 2px; height: 2px; top: 36%; left: 8%; animation-delay: 4.0s; }
+
+@keyframes twinkle-star {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.2; transform: scale(0.8); }
 }
 
 .hero-content {
     max-width: 800px;
-    position: relative; /* Needed for absolute positioned stars */
-    z-index: 4; /* Ensure content is above stars */
+    position: relative;
+    z-index: 5; /* Ensure content is above stars */
 }
 
 .hero h1 {
