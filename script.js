@@ -14,6 +14,9 @@ function handleScrollAnimations() {
     const rocket = document.querySelector('.rocket');
     const serviceCards = document.querySelectorAll('.service-card');
     const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const servicesSection = document.querySelector('.services');
+    const testimonialsSection = document.querySelector('.testimonials');
+    
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
@@ -39,6 +42,16 @@ function handleScrollAnimations() {
         }
     }
 
+    // Added check for services section visibility (for planet)
+    if (servicesSection) {
+        const sectionTop = servicesSection.getBoundingClientRect().top;
+        if (sectionTop < windowHeight * 0.85) { // Slightly different trigger point maybe?
+            servicesSection.classList.add('visible');
+        } else {
+            // Optional: servicesSection.classList.remove('visible');
+        }
+    }
+
     // Service cards animation
     serviceCards.forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
@@ -50,6 +63,16 @@ function handleScrollAnimations() {
             // card.classList.remove('visible'); 
         }
     });
+
+    // Added check for testimonials section visibility (for planet)
+    if (testimonialsSection) {
+        const sectionTop = testimonialsSection.getBoundingClientRect().top;
+        if (sectionTop < windowHeight * 0.85) {
+            testimonialsSection.classList.add('visible');
+        } else {
+            // Optional: testimonialsSection.classList.remove('visible');
+        }
+    }
 
     // Testimonial cards animation
     testimonialCards.forEach(card => {

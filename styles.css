@@ -74,7 +74,7 @@ nav {
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .logo i {
@@ -93,10 +93,30 @@ nav a {
     color: var(--text-color);
     font-weight: 500;
     transition: color 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--secondary-color);
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+    background: var(--secondary-color);
 }
 
 nav a:hover {
-    color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 /* Hero Section */
@@ -132,12 +152,51 @@ nav a:hover {
 
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content::before,
+.hero-content::after {
+    content: '★';
+    position: absolute;
+    color: var(--secondary-color);
+    opacity: 0;
+    animation: fadeInStar 2s ease 1s forwards, twinkleStar 3s infinite alternate;
+    z-index: 1;
+    font-size: 1.2rem;
+}
+
+.hero-content::before {
+    top: 10%;
+    left: 10%;
+    animation-delay: 1.2s, 1.2s;
+}
+
+.hero-content::after {
+    top: 20%;
+    right: 15%;
+    font-size: 1rem;
+    animation-delay: 1.4s, 1.4s;
+}
+
+@keyframes fadeInStar {
+    to { opacity: 0.7; }
+}
+
+@keyframes twinkleStar {
+    from { transform: scale(1); opacity: 0.5; }
+    to { transform: scale(1.2) rotate(5deg); opacity: 0.8; }
 }
 
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease;
+    background: linear-gradient(90deg, var(--secondary-color), var(--text-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .hero p {
@@ -172,12 +231,41 @@ nav a:hover {
     position: relative;
     backdrop-filter: blur(10px);
     z-index: 5;
+    overflow: hidden;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: -50px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #ffcc66 20%, #cc6600 80%);
+    border-radius: 50%;
+    box-shadow: inset -10px -10px 20px rgba(0,0,0,0.3), 0 0 15px #ffcc66;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s, left 1s ease-out 0.5s;
+    z-index: 1;
+}
+
+.services.visible::before {
+    opacity: 0.6;
+    transform: scale(1);
+    left: 5%;
 }
 
 .services h2 {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
+    background: linear-gradient(90deg, var(--secondary-color), var(--text-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    z-index: 2;
 }
 
 .services-grid {
@@ -218,12 +306,41 @@ nav a:hover {
     padding: 5rem 5%;
     position: relative;
     z-index: 5;
+    overflow: hidden;
+}
+
+.testimonials::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    right: -80px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, #66ccff 30%, #003366 90%);
+    border-radius: 50%;
+    box-shadow: inset 10px 10px 25px rgba(0,0,0,0.4), 0 0 20px #66ccff;
+    opacity: 0;
+    transform: scale(0.6) rotate(15deg);
+    transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s, right 1s ease-out 0.5s;
+    z-index: 1;
+}
+
+.testimonials.visible::after {
+    opacity: 0.7;
+    transform: scale(1) rotate(0deg);
+    right: 8%;
 }
 
 .testimonials h2 {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
+    background: linear-gradient(90deg, var(--secondary-color), var(--text-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    z-index: 2;
 }
 
 .testimonials-grid {
@@ -402,6 +519,25 @@ footer {
 .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
 .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--light-bg);
+    border-radius: 5px;
+    border: 2px solid var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     nav {
@@ -421,5 +557,24 @@ footer {
     .services-grid,
     .testimonials-grid {
         grid-template-columns: 1fr;
+    }
+
+    .services::before {
+        width: 60px;
+        height: 60px;
+        left: -30px;
+        top: 5%;
+    }
+    .services.visible::before {
+        left: 2%;
+    }
+    .testimonials::after {
+        width: 90px;
+        height: 90px;
+        right: -45px;
+        bottom: 5%;
+    }
+    .testimonials.visible::after {
+        right: 3%;
     }
 } 
